@@ -4,11 +4,11 @@ import LoginPage from './UI/Login';
 import SignUpPage from './UI/SignUp';
 import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom';
 import LoginProvider from './UI/loginContext';
-import BookProvider from './UI/bookContext';
+import BookContextProvider from './UI/bookContext';
 function App() {
   return (
     <LoginProvider>
-      <BookProvider>
+     <BookContextProvider>
         <Router>
           <Switch>
             <Route path='/signup' component={SignUpPage}></Route>
@@ -16,7 +16,7 @@ function App() {
             <Route path='/' component={LoginPage}></Route>
           </Switch>
         </Router>
-      </BookProvider>
+        </BookContextProvider>
     </LoginProvider>
   );
 }

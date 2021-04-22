@@ -2,13 +2,14 @@ import React, { useState,useContext} from 'react';
 import { Button, Form } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import { LoginContext } from './loginContext';
-
+import { useHistory } from 'react-router';
 const LoginForm = () => {
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
     const[isInvalidUserName,setIsInvalidUserName]=useState(false);
     const[isInvalidPassword,setIsInvalidPassword]=useState(false);
-    const {setUser,setToken} = useContext(LoginContext)
+    const {setUser,setToken} = useContext(LoginContext);
+    const history = useHistory ();
     async function submitForm(){
         if(userName.length>0&&userName.trim()!==""&&password.length>=6){
             const data={
@@ -29,11 +30,13 @@ const LoginForm = () => {
                  if (res.success){
                     alert("Login Successful. Redirecting to Login Page.");
                     let user1 = res.User;
-                    setUser(user1.username);
+                    setUser(user1);
                     let tok = res.token;
                     setToken(tok);
-                    // console.log(user1.username);
-                    // console.log(typeof(res.token));
+                    localStorage.setItem("UserName",res.User.username);
+                    localStorage.setItem("accountType",res.User.account_type);
+                    localStorage.setItem("token",res.token);
+                    history.push("/homepage");
                 }
                 else {
                     alert("Entered details format is incorrect.")
@@ -67,9 +70,7 @@ const LoginForm = () => {
                     <Form.Control type="text" placeholder="Password"  onChange={(event)=>{setPassword(event.target.value);}} value={password}   isInvalid={isInvalidPassword} />
                     {isInvalidPassword?<label style={{color:"red"}}>Password too small</label>:null}
                 </Form.Group>
-                <Link exact to="/homepage">
                     <Button  size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }} onClick={submitForm}>Submit </Button>
-                </Link>
                 <Link to="/signup">
                     <Button  size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }}>SignUp</Button>
                 </Link>
