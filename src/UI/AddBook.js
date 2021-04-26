@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import {
     Button,
     Modal,
@@ -8,7 +8,7 @@ import {
     ModalFooter,
 } from 'react-bootstrap';
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
-
+import { LoginContext } from './loginContext';
 const AddBook = (props) => {
     const[title,setTitle]=useState("");
     const[description,setDescription]=useState("");
@@ -24,6 +24,7 @@ const AddBook = (props) => {
     const[isInvalidDescription,setIsInvalidDescription]=useState(false);
     const[isInvalidImg,setIsInvalidImg]=useState(false);
     const[isInvalidPdf,setIsInvalidPdf]=useState(false);
+    const {token} = useContext(LoginContext);
     async function validate(){
         if(title.trim()!==""&&title.length>0&&author.trim()!==""&&author.length>0&&publication.trim()!==""&&publication.length>0&&genre.trim()!==""&&genre.length>0&&pdf.trim()!==""&&pdf.length>0&&img.trim()!==""&&img.length>0&&description.trim()!==""&&description.length>0){
             let data = {
@@ -35,17 +36,22 @@ const AddBook = (props) => {
                 image:img,
                 pdf:pdf,
             }
+            let tokens;
+            if(token){
+                 tokens="Token "+token;
+            }else{
+                 tokens="Token "+localStorage.getItem('token');
+            }
             const response = await fetch("https://shrey-library-api.herokuapp.com/api/bookListAdd/", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
                     "Content-Type": "application/json",
                     'Accept': 'application/json',
-                    'Authorization':'Token 264006bf348a28eac12f26fb84585a8fd6abf4b4'
+                    'Authorization':tokens,
                 },
                 })
                 const res = await response.json()
-                console.log(res)
                 if (res.success) {
                     alert("Done");
                 }
@@ -118,9 +124,7 @@ const AddBook = (props) => {
                 </Container>
                 <Button style={{marginLeft:"2%"}} onClick={validate} > Add Book</Button>
             </ModalBody>
-            <ModalFooter>
-           
-            </ModalFooter>
+            <ModalFooter/>
         </Modal>
 
     );

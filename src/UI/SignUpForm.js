@@ -3,7 +3,7 @@ import { Button, Form,Row } from 'react-bootstrap';
 import LoginPage from './Login';
 import {Link} from 'react-router-dom';
 import { LoginContext } from './loginContext';
-
+import { useHistory } from 'react-router';
 const SignUpForm = () => {
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
@@ -19,7 +19,8 @@ const SignUpForm = () => {
     const[isInvalidPassword,setIsInvalidPassword]=useState(false);
     const[isInvalidEmail,setIsInvalidEmail]=useState(false);
     const[isInvalidAccount,setIsInvalidAccount]=useState(false);
-    const {setUser,setToken} = useContext(LoginContext)
+    const {setUser,setToken} = useContext(LoginContext);
+    const history = useHistory ();
     function loginCall(){
         <LoginPage />
     }
@@ -45,13 +46,17 @@ const SignUpForm = () => {
                     },
                 })
                 const res = await response.json()
-                console.log(res)
+                console.log(res);
                  if (res.success){
                     alert("Register Successful. Redirecting to Login Page."); 
-                    let user1 = res.User
-                    setUser(user1.username)
-                    let tok = res.token
-                    setToken(tok)
+                    let user1 = res.User;
+                    setUser(user1);
+                    let tok = res.token;
+                    setToken(tok);
+                    localStorage.setItem("UserName",res.User.username);
+                    localStorage.setItem("accountType",res.User.account_type);
+                    localStorage.setItem("token",res.token);
+                    history.push("/homepage");
                 }
                 else {
                     alert("Entered details format is incorrect.")
@@ -179,9 +184,7 @@ const SignUpForm = () => {
                     <Form.Check type="radio" id="2" name="account" label="Student "onClick={()=>{setAccountType(2);}}/>
                     {isInvalidAccount?<label style={{color:"red"}}>Select one of them</label>:null}
                 </Form.Group>
-                <Link to='/homepage'>
                     <Button onClick={submitForm} size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }} onClick={submitForm}>Submit </Button>
-                </Link>
                 <Link to='/'>
                     <Button onClick={loginCall} size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }}>Login </Button>
                 </Link>

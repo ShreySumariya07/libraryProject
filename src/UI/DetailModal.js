@@ -9,11 +9,10 @@ import {
     Col,
 } from 'react-bootstrap';
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
-import EditBook from "./EditBook";
 
 const Details = (props) => {
     return (
-        <Modal  show={props.show} size="md"  onHide={props.hideModal}>
+        <Modal show={props.show} size="md" onHide={props.hideModal}>
             <ModalHeader closeButton={true} >
                 Details
         </ModalHeader>
@@ -21,23 +20,20 @@ const Details = (props) => {
                 <Container>
                     <Row>
                         <Col >
-                            <img src={props.img} alt="hello"></img>
+                            <img src={props.img}></img>
                         </Col>
                         <Col>
-                            <h3>{props.title}</h3>
-                            <h3>{props.author}</h3>
-                            <h3>{props.publication}</h3>
-                            <h3>{props.description}</h3>
+                            <Row style={{ marginBottom: "1%" }}><h2>{props.title}</h2></Row>
+                            <Row><h6>By : {props.author}</h6><h6>Published by: {props.publication}</h6></Row>
+                            <Row><h5> {props.description}</h5></Row>
                         </Col>
                     </Row>
                     <Row>
                         <Button style={{ marginLeft: "2%", width: "100%" }} href={props.pdf} target="__blank"> Download</Button>
                     </Row>
                 </Container>
-
             </ModalBody>
-            <ModalFooter>
-            </ModalFooter>
+            <ModalFooter />
         </Modal>
 
     );
