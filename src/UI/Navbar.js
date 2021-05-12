@@ -1,13 +1,10 @@
 import React from 'react';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import { useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {
     AiOutlinePlus,
   } from 'react-icons/all';
-import { LoginContext } from './loginContext';
 const Navbars = (props) => {
-    const {user} = useContext(LoginContext);
     return (
         <>
             <Navbar  collapseOnSelect expand="lg" style={{backgroundColor:'#333645' }}>

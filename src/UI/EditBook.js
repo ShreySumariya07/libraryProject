@@ -7,7 +7,6 @@ import {
     Container,
     ModalFooter,
     Col,
-    Row,
 } from 'react-bootstrap';
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
 
@@ -29,7 +28,7 @@ const EditBook = (props) => {
     const[isInvalidImg,setIsInvalidImg]=useState(false);
     const[isInvalidPdf,setIsInvalidPdf]=useState(false);
     const [tok,setTok]=useState(props.token);
-    function setValues(){
+    /*function setValues(){
         setTitle(props.title);
         setId(props.id);
         setDescription(props.description);
@@ -39,9 +38,17 @@ const EditBook = (props) => {
         setPdf(props.pdf);
         setImg(props.img);
         setTok(props.token);
-    }
+    }*/
     useEffect(() => {
-        setValues();
+        setTitle(props.title);
+        setId(props.id);
+        setDescription(props.description);
+        setAuthor(props.author);
+        setGenre(props.genre);
+        setPublication(props.publication);
+        setPdf(props.pdf);
+        setImg(props.img);
+        setTok(props.token);
     },[props]);
     async function deleteBook(){
         let tokw;

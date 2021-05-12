@@ -142,6 +142,9 @@ const SignUpForm = () => {
                   setIsInvalidEmail(true);
                 }
                 break;
+                default:
+                    console.log('Error');
+                    break;
             }
        }
     return (
@@ -184,7 +187,7 @@ const SignUpForm = () => {
                     <Form.Check type="radio" id="2" name="account" label="Student "onClick={()=>{setAccountType(2);}}/>
                     {isInvalidAccount?<label style={{color:"red"}}>Select one of them</label>:null}
                 </Form.Group>
-                    <Button onClick={submitForm} size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }} onClick={submitForm}>Submit </Button>
+                    <Button onClick={submitForm} size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }} >Submit </Button>
                 <Link to='/'>
                     <Button onClick={loginCall} size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }}>Login </Button>
                 </Link>

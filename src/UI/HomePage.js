@@ -22,7 +22,7 @@ const HomePage = () => {
     const[publication,setPublication]=useState("");
     const[pdf,setPdf]=useState("");
     const [img,setImg]=useState("");
-    const {user,token,setToken,setUser} = useContext(LoginContext); 
+    const {token} = useContext(LoginContext); 
     const {books,setBooks} = useContext(BookContext);
     const bookFetch = async () => {
         let tok;
@@ -46,7 +46,7 @@ const HomePage = () => {
     }    
     useEffect(() => {
         bookFetch();
-    },[]);
+    });
     const Modal =  (id) => {
         const bookData = books.filter((value) => value.book_id === id )
         const book = bookData[0];
@@ -100,7 +100,7 @@ const HomePage = () => {
             <Row>
                 {
                     books.map((value) => {
-                        return (<BookCard img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
+                        return (<BookCard key={value.title} img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
                     }
 
                     )
@@ -111,7 +111,7 @@ const HomePage = () => {
 
                     {
                         books.map((value) => {
-                            return (<BookCard img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
+                            return (<BookCard key={value.title} img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
                         }
 
                         )
