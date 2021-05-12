@@ -4,11 +4,9 @@ const BookCard=(props)=>{
     return (
         <div className="Cards" style={{border:" 1px solid white" }}>
             <div className="containers">
-                <img src={props.img} alt="hello" />
+                <img src={props.img} alt="Title" />
                 <div className="overlay">
-                    <a>
-                        <h5 className="text" style={{cursor:"pointer"}} onClick={()=>{props.Modal(props.id);}}>{props.title}</h5>
-                    </a>
+                  <h5 className="text" style={{cursor:"pointer"}} onClick={()=>{props.Modal(props.id);}}>{props.title}</h5>
                 </div>
             </div>
         </div>
