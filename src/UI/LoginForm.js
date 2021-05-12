@@ -67,7 +67,7 @@ const LoginForm = () => {
                 
                 <Form.Group>
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="text" placeholder="Password"  onChange={(event)=>{setPassword(event.target.value);}} value={password}   isInvalid={isInvalidPassword} />
+                    <Form.Control type="password" placeholder="Password"  onChange={(event)=>{setPassword(event.target.value);}} value={password}   isInvalid={isInvalidPassword} />
                     {isInvalidPassword?<label style={{color:"red"}}>Password too small</label>:null}
                 </Form.Group>
                     <Button  size={'lg'} style={{ border:"none",marginTop: "5%",width:"100%",background:"#E15168" }} onClick={submitForm}>Submit </Button>

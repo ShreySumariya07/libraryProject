@@ -92,7 +92,7 @@ const HomePage = () => {
     return (
         <Container fluid={true} style={{ padding: "0px", backgroundColor: " #d9d9d9" }}>
            <AddBook show={openModal} hideModal={hideModal} />
-           <EditBook show={openEditModal} hideModal={hideModals} token={token} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre}  />
+           <EditBook key={title} show={openEditModal} hideModal={hideModals} token={token} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre}  />
            <Details show={openDetailModal} hideModal={hideModals} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre} />
             <Navbars  openAddModal={openAddModal} />
             <CarouselPage />
