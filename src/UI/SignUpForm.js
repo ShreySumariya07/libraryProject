@@ -46,7 +46,6 @@ const SignUpForm = () => {
                     },
                 })
                 const res = await response.json()
-                console.log(res);
                  if (res.success){
                     alert("Register Successful. Redirecting to Login Page."); 
                     let user1 = res.User;
