@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import {
     Button,
     Modal,
@@ -12,7 +12,7 @@ import ModalHeader from "react-bootstrap/esm/ModalHeader";
 
 const EditBook = (props) => {
     const[title,setTitle]=useState(props.title);
-    const[id,setId]=useState(props.id);
+    const id =props.id;
     const[description,setDescription]=useState(props.description);
     const[author,setAuthor]=useState(props.author);
     const[genre,setGenre]=useState(props.genre);
@@ -27,26 +27,12 @@ const EditBook = (props) => {
     const[isInvalidImg,setIsInvalidImg]=useState(false);
     const[isInvalidPdf,setIsInvalidPdf]=useState(false);
     const [tok,setTok]=useState(props.token);
-    useEffect(() => {
-        if(props.title&&props.id&&props.description&&props.author&&props.genre&&props.publication&&props.pdf&&props.img){
-            setTitle(props.title);
-            setId(props.id);
-            setDescription(props.description);
-            setAuthor(props.author);
-            setGenre(props.genre);
-            setPublication(props.publication);
-            setPdf(props.pdf);
-            setImg(props.img);
-            setTok(props.token);}
-            else{
-                console.log("No data");
-            }
-    },[]);
     async function deleteBook(){
         let tokw;
         if(tok){
             tokw="Token "+tok;
        }else{
+            setTok(localStorage.getItem('token'));
             tokw="Token "+localStorage.getItem('token');
        }
         let url='https://shrey-library-api.herokuapp.com/api/bookDetail/'+id+'/'
