@@ -123,7 +123,7 @@ const EditBook = (props) => {
             <ModalBody>
             <Container>
             <Col>
-              <img src={props.img} alt="hello"></img>
+              <img src={props.img} alt="Image1" style={{height:'200px',width:'200px'}}></img>
             </Col>
               <Col>
                 <Form>

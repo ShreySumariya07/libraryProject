@@ -20,7 +20,7 @@ const Details = (props) => {
                 <Container>
                     <Row>
                         <Col >
-                            <img src={props.img} alt="Name"></img>
+                            <img src={props.img} alt="Image2" style={{height:'200px',width:'200px'}}></img>
                         </Col>
                         <Col>
                             <Row style={{ marginBottom: "1%" }}><h2>{props.title}</h2></Row>
