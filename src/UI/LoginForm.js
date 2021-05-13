@@ -26,7 +26,6 @@ const LoginForm = () => {
                     },
                 })
                 const res = await response.json()
-                console.log(res)
                  if (res.success){
                     alert("Login Successful. Redirecting to Login Page.");
                     let user1 = res.User;
