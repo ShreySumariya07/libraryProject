@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form,Row } from 'react-bootstrap';
 import LoginPage from './Login';
 import {Link} from 'react-router-dom';
-import { LoginContext } from './loginContext';
 import { useHistory } from 'react-router';
 const SignUpForm = () => {
     const [userName,setUserName]=useState("");
@@ -19,7 +18,6 @@ const SignUpForm = () => {
     const[isInvalidPassword,setIsInvalidPassword]=useState(false);
     const[isInvalidEmail,setIsInvalidEmail]=useState(false);
     const[isInvalidAccount,setIsInvalidAccount]=useState(false);
-    const {setUser,setToken} = useContext(LoginContext);
     const history = useHistory ();
     function loginCall(){
         <LoginPage />
@@ -48,14 +46,7 @@ const SignUpForm = () => {
                 const res = await response.json()
                  if (res.success){
                     alert("Register Successful. Redirecting to Login Page."); 
-                    let user1 = res.User;
-                    setUser(user1);
-                    let tok = res.token;
-                    setToken(tok);
-                    localStorage.setItem("UserName",res.User.username);
-                    localStorage.setItem("accountType",res.User.account_type);
-                    localStorage.setItem("token",res.token);
-                    history.push("/homepage");
+                    history.push("/");
                 }
                 else {
                     alert("Entered details format is incorrect.")
