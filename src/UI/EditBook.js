@@ -4,7 +4,6 @@ import {
     Modal,
     Form,
     ModalBody,
-    Container,
     ModalFooter,
     Col,
 } from 'react-bootstrap';
@@ -121,7 +120,6 @@ const EditBook = (props) => {
             Edit Book
         </ModalHeader>
             <ModalBody>
-            <Container>
             <Col>
               <img src={props.img} alt="Image1" style={{height:'200px',width:'200px'}}></img>
             </Col>
@@ -157,7 +155,6 @@ const EditBook = (props) => {
                     </Form.Group>
                 </Form>
                 </Col>
-                </Container>
                 <Button style={{ marginLeft: "2.5%", width: "100%",marginBottom:"2%" }} onClick={()=>validate()}> Edit Book</Button>
                 <Button style={{ marginLeft: "2.5%", width: "100%",marginBottom:"2%" }} onClick={()=>deleteBook()}> Delete Book</Button>
                 <Button style={{ marginLeft: "2%", width: "100%" }} href={props.pdf} target="__blank"> Download</Button>

@@ -2,10 +2,10 @@ import React,{useState,useContext} from 'react';
 import {Form,Container,Row,Col,Image} from 'react-bootstrap';
 import logo from '../undraw_reading_time_gvg0.svg';
 import { LoginContext } from './loginContext';
-
 import {Link} from 'react-router-dom';
 import  './signup.css';
 import avtar from '../undraw_profile_pic_ic5t.svg';
+import { useHistory } from 'react-router';
 const SignUpNew = () =>{
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
@@ -22,7 +22,7 @@ const SignUpNew = () =>{
     const[isInvalidEmail,setIsInvalidEmail]=useState(false);
     const[isInvalidAccount,setIsInvalidAccount]=useState(false);
     const {setUser,setToken} = useContext(LoginContext);
-
+    const history = useHistory ();
     async function submitForm(){
         var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if(userName.length>0&&userName.trim()!==""&&firstName.length>0&&firstName.trim()!==""&&lastName.length>0&&lastName.trim()!==""&&middleName.length>0&&middleName.trim()!==""&&password.length>=6&&mailformat.test(email) === true){
@@ -54,6 +54,8 @@ const SignUpNew = () =>{
                     localStorage.setItem("UserName",res.User.username);
                     localStorage.setItem("accountType",res.User.account_type);
                     localStorage.setItem("token",res.token);
+                    history.push("/");
+
                 }
                 else {
                     alert("Entered details format is incorrect.")
@@ -145,7 +147,7 @@ const SignUpNew = () =>{
             }
        }
         return(
-        <div>
+        <div >
         <Container>
             <Row md={2} xs={1} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
                 <Col style={{backgroundColor:'orange',border:'solid transparent',borderRadius:'2rem',padding:'2rem'}}>
@@ -189,22 +191,20 @@ const SignUpNew = () =>{
                             </Col>
                             <Col>
                                 <Form.Label style={{display:'flex',justifyContent:'center',fontSize:'100%'}}>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" style={{borderRadius:'3rem'}} onChange={(event)=>{setPassword(event.target.value); validateWhileFocus(event)}} value={password} isInvalid={isInvalidPassword} />
+                                <Form.Control type="password" name="password" placeholder="Password" style={{borderRadius:'3rem'}} onChange={(event)=>{setPassword(event.target.value); validateWhileFocus(event);}} value={password} isInvalid={isInvalidPassword} />
                                  {isInvalidPassword?<label style={{color:"red"}}>Password too small</label>:null}
                             </Col>
                         </Form.Row>
                         <Form.Row style={{display:'flex',justifyContent:'center'}}>
-                            <Form.Check type="radio" id="1" name="account" label="Teacher" style={{margin:'2%'}} onClick={()=>{setAccountType(1);}}/>
+                            <Form.Check type="radio" id="1" name="account" label="Teacher" style={{margin:'2%'}} onClick={()=>{setAccountType(1);setIsInvalidAccount(false);}}/>
                             
-                            <Form.Check type="radio" id="2" name="account" label="Student" style={{margin:'2%'}} onClick={()=>{setAccountType(2);}}/>
+                            <Form.Check type="radio" id="2" name="account" label="Student" style={{margin:'2%'}} onClick={()=>{setAccountType(2);setIsInvalidAccount(false);}}/>
                             {isInvalidAccount?<label style={{color:"red" ,position:'relative'}}>Select one of them</label>:null} 
                         </Form.Row>
                         
                     </Form>
                     <div style={{display:'flex',justifyContent:'center',marginTop:'2rem'}}>
-                        <Link to="/">
                             <button className='button' onClick={submitForm}>Submit</button>
-                        </Link>
                         <Link to="/">
                             <button className='button'>Signin</button>
                         </Link>
