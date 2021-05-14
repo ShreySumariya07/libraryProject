@@ -2,7 +2,7 @@ import React,{useState,useContext} from 'react';
 import {Form,Container,Row,Col,Image} from 'react-bootstrap';
 import logo from '../undraw_reading_time_gvg0.svg';
 import { LoginContext } from './loginContext';
-import { useHistory } from 'react-router';
+
 import {Link} from 'react-router-dom';
 import  './signup.css';
 import avtar from '../undraw_profile_pic_ic5t.svg';
@@ -22,7 +22,6 @@ const SignUpNew = () =>{
     const[isInvalidEmail,setIsInvalidEmail]=useState(false);
     const[isInvalidAccount,setIsInvalidAccount]=useState(false);
     const {setUser,setToken} = useContext(LoginContext);
-    const history = useHistory ();
 
     async function submitForm(){
         var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

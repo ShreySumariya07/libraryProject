@@ -3,8 +3,6 @@ import HomePage from './UI/HomePage';
 import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom';
 import LoginProvider from './UI/loginContext';
 import BookContextProvider from './UI/bookContext';
-import SignInForm from './UI/SignInForm';
-import SignUpNew from './UI/SignUpNew';
 import LoginPage from './UI/Login';
 import SignUpPage from './UI/SignUp';
 
