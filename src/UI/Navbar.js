@@ -7,7 +7,7 @@ import {
 const Navbars = (props) => {
     return (
         <>
-            <Navbar  collapseOnSelect expand="lg" style={{backgroundColor:'#333645' }}>
+            <Navbar  collapseOnSelect expand="lg" style={{backgroundColor:'#393939' }}>
                 <Navbar.Brand style={{color:'#fefffb'}}>LibraryXYZ</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" >
@@ -17,7 +17,7 @@ const Navbars = (props) => {
                     <Nav style={{background:'#fefffb',marginTop:'0.2%'}} >
                         <NavDropdown title={`Hello ${localStorage.getItem("UserName")}!`} color='#fefffb' style={{fontWeight:"bold",color:'#fefffb'}} id="basic-nav-dropdown" >
                             <NavDropdown.Item>
-                                <label><Link to="/">Log Out!</Link></label>
+                                <label onClick={()=>{localStorage.clear();}}><Link to="/">Log Out!</Link></label>
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>

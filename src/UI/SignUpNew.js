@@ -147,8 +147,8 @@ const SignUpNew = () =>{
             }
        }
         return(
-        <div >
-        <Container>
+        <div  >
+        <Container style={{marginLeft:'6%'}}>
             <Row md={2} xs={1} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
                 <Col style={{backgroundColor:'orange',border:'solid transparent',borderRadius:'2rem',padding:'2rem'}}>
                     <div style={{display:'flex',justifyContent:'center',margin:'auto auto 1rem auto'}}>
