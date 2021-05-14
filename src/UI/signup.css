@@ -20,8 +20,7 @@
 }
 .container {
   position: absolute;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin: auto;
   top: 30%;
 }
 @media screen and (max-width: 700px) {
