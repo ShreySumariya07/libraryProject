@@ -90,16 +90,16 @@ const HomePage = () => {
     }
     
     return (
-        <Container fluid={true} style={{ padding: "0px", backgroundColor: " #d9d9d9" }}>
+        <Container fluid={true} style={{ padding: "0px", backgroundColor: "#e4e6e3" }}>
            <AddBook show={openModal} hideModal={hideModal} />
            <EditBook key={title} show={openEditModal} hideModal={hideModals} token={token} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre}  />
            <Details show={openDetailModal} hideModal={hideModals} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre} />
             <Navbars  openAddModal={openAddModal} />
-            <CarouselPage />
-            <h2 style={{ marginLeft: "4%" }}>Books</h2>
+            <CarouselPage/>
+            <h2 style={{ marginLeft: "4%",marginTop:'2%'}}>Books</h2>
             <Row>
                 {
-                    books.map((value) => {
+                    books.slice(0,books.length/2+1).map((value) => {
                         return (<BookCard key={value.title} img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
                     }
 
@@ -110,7 +110,7 @@ const HomePage = () => {
                 <Row>
 
                     {
-                        books.map((value) => {
+                        books.slice(books.length/2+1,books.length+1).map((value) => {
                             return (<BookCard key={value.title} img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
                         }
 
@@ -118,7 +118,7 @@ const HomePage = () => {
                     }
                 </Row>
             </Collapse>
-            <h4 style={{ cursor: "pointer", marginLeft: "10%" }} onClick={showMore}>{tag}</h4>
+            <label style={{ cursor: "pointer", marginLeft: "5%" }} onClick={showMore}>{tag}</label>
         </Container>
     );
 
