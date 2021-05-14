@@ -4,10 +4,8 @@ import SignUpNew from './SignUpNew';
 
 const SignUpPage = () => {
     return (
-        <div >
-                    <br/>
-                    <br/>
-                    <br/>
+        <div style={{height:"100rem",background:" #ffc75f"}}>
+                    
                     <SignUpNew /> 
             </div>
     );

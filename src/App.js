@@ -14,9 +14,9 @@ function App() {
      <BookContextProvider>
         <Router>
           <Switch>
-            <Route path='/' component={LoginPage}></Route>
-            <Route path='/signup' component={SignUpPage}></Route>
-            <Route path='/homepage' component={HomePage}></Route>
+            <Route exact path='/' component={LoginPage}></Route>
+            <Route exact path='/signup' component={SignUpPage}></Route>
+            <Route exact path='/homepage' component={HomePage}></Route>
           </Switch>
         </Router>
         </BookContextProvider>

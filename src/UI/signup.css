@@ -1,6 +1,6 @@
-html {
+/* html {
   background-color: #ffc75f;
-}
+} */
 .button {
   background-color: rgba(255, 255, 0, 0.747);
   color: black;
@@ -18,7 +18,12 @@ html {
   border-radius: 3rem;
   margin-bottom: 1.4rem;
 }
-
+.container {
+  position: absolute;
+  margin-left: 20%;
+  margin-right: 20%;
+  top: 30%;
+}
 @media screen and (max-width: 700px) {
   .button {
     background-color: rgba(255, 255, 0, 0.747);
@@ -28,5 +33,9 @@ html {
     margin-left: 1rem;
     margin-right: 1rem;
     padding: 0rem 0.2rem;
+  }
+  .conatiner {
+    position: absolute;
+    top: 30%;
   }
 }

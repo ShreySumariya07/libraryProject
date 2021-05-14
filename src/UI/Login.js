@@ -5,10 +5,7 @@ import SignInForm from './SignInForm';
 
 const LoginPage = () => {
     return (
-        <div>
-                    <br/>
-                    <br/>
-                    <br/>
+        <div style={{height:"100rem",background:"#ffc75f"}}>
                     <SignInForm /> 
             </div>
     );

@@ -3,7 +3,9 @@ import {Form,Container,Row,Col,Image} from 'react-bootstrap';
 import logo from '../undraw_reading_time_gvg0.svg';
 import { LoginContext } from './loginContext';
 import { useHistory } from 'react-router';
+import {Link} from 'react-router-dom';
 import  './signup.css';
+import avtar from '../undraw_profile_pic_ic5t.svg';
 const SignUpNew = () =>{
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
@@ -21,9 +23,7 @@ const SignUpNew = () =>{
     const[isInvalidAccount,setIsInvalidAccount]=useState(false);
     const {setUser,setToken} = useContext(LoginContext);
     const history = useHistory ();
-    function callLogin(){
-        history.push("/");
-    }
+
     async function submitForm(){
         var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if(userName.length>0&&userName.trim()!==""&&firstName.length>0&&firstName.trim()!==""&&lastName.length>0&&lastName.trim()!==""&&middleName.length>0&&middleName.trim()!==""&&password.length>=6&&mailformat.test(email) === true){
@@ -55,7 +55,6 @@ const SignUpNew = () =>{
                     localStorage.setItem("UserName",res.User.username);
                     localStorage.setItem("accountType",res.User.account_type);
                     localStorage.setItem("token",res.token);
-                    history.push("/homepage");
                 }
                 else {
                     alert("Entered details format is incorrect.")
@@ -147,10 +146,13 @@ const SignUpNew = () =>{
             }
        }
         return(
-        <>
-        <Container style={{position:'absolute',marginLeft:'10%' ,top:'20%'}}>
-            <Row md={2} xs={2} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
+        <div>
+        <Container>
+            <Row md={2} xs={1} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
                 <Col style={{backgroundColor:'orange',border:'solid transparent',borderRadius:'2rem',padding:'2rem'}}>
+                    <div style={{display:'flex',justifyContent:'center',margin:'auto auto 1rem auto'}}>
+                        <Image src={`${avtar}`} style={{height:'25%',width:'25%'}} />
+                    </div>
                     <Form>
                         <div style={{display:'flex',justifyContent:'center',margin:'0% 5%',fontSize:'200%',color:'black',fontFamily:'sans-serif'}}>
                             Sign Up
@@ -192,23 +194,29 @@ const SignUpNew = () =>{
                                  {isInvalidPassword?<label style={{color:"red"}}>Password too small</label>:null}
                             </Col>
                         </Form.Row>
-                        <Form.Group as={Row} style={{display:'flex',justifyContent:'center'}}>
+                        <Form.Row style={{display:'flex',justifyContent:'center'}}>
                             <Form.Check type="radio" id="1" name="account" label="Teacher" style={{margin:'2%'}} onClick={()=>{setAccountType(1);}}/>
+                            
                             <Form.Check type="radio" id="2" name="account" label="Student" style={{margin:'2%'}} onClick={()=>{setAccountType(2);}}/>
-                            {isInvalidAccount?<label style={{color:"red"}}>Select one of them</label>:null}
-                        </Form.Group>
-                        <div style={{display:'flex',justifyContent:'center',marginTop:'2rem'}}>
-                            <button className='button' onClick={submitForm}>Submit</button>
-                            <button className='button' onClick={callLogin}>Signin</button>
-                        </div>
+                            {isInvalidAccount?<label style={{color:"red" ,position:'relative'}}>Select one of them</label>:null} 
+                        </Form.Row>
+                        
                     </Form>
+                    <div style={{display:'flex',justifyContent:'center',marginTop:'2rem'}}>
+                        <Link to="/">
+                            <button className='button' onClick={submitForm}>Submit</button>
+                        </Link>
+                        <Link to="/">
+                            <button className='button'>Signin</button>
+                        </Link>
+                    </div>
                 </Col>
                 <Col style={{backgroundColor:'azure',border:'solid transparent',borderRadius:'2rem'}}>
                     <Image src={`${logo}`} style={{height:'100%',width:'100%'}} />
                 </Col>
             </Row>
             </Container>
-        </>
+        </div>
     );
 }
 

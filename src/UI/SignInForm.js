@@ -7,6 +7,7 @@ import './signup.css';
 import logo from '../undraw_Sign_in_re_o58h.svg';
 import {Link} from 'react-router-dom';
 import SignUp from './SignUpNew';
+import avtar from '../undraw_profile_pic_ic5t.svg';
 
 const SignInForm = () =>{
     const[userName,setUserName]=useState("");
@@ -68,12 +69,13 @@ const SignInForm = () =>{
     }    
     }
     return(
-        <Container style={{position:'absolute',marginLeft:'10%',marginRight:'10%',top:'30%'}}>
-            <Row md={2} xs={2} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
-                <Col style={{backgroundColor:'azure',border:'solid transparent',borderRadius:'2rem'}}>
-                    <Image src={`${logo}`} style={{height:'100%',width:'100%'}} />
-                </Col>
+    <div>
+        <Container>
+            <Row md={2} xs={1} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
                 <Col style={{backgroundColor:'orange',border:'solid transparent',borderRadius:'2rem',padding:'2rem'}}>
+                    <div style={{display:'flex',justifyContent:'center',margin:'auto auto 1rem auto'}}>
+                        <Image src={`${avtar}`} style={{height:'25%',width:'25%'}} />
+                    </div>
                     <Form>
                         <div style={{display:'flex',justifyContent:'center',margin:'0% 5%',fontSize:'160%',color:'black',fontFamily:'sans-serif'}}>
                             Sign In
@@ -90,16 +92,20 @@ const SignInForm = () =>{
                             <Form.Control type="password" placeholder="Password" style={{borderRadius:'3rem'}} onChange={(event)=>{setPassword(event.target.value);}} value={password}  isInvalid={isInvalidPassword}/>
                             {isInvalidPassword?<label style={{color:"red"}}>Password too small</label>:null}
                         </Form.Group>
-                        <div style={{display:'flex',justifyContent:'center',marginTop:'2rem'}}>
+                    </Form>
+                    <div style={{display:'flex',justifyContent:'center',marginTop:'2rem'}}>
                             <button className='button' onClick={submitForm}>Submit</button>
                             <Link to="/signup">
                                 <button className='button' onClick={callSignup}>Signup</button>
                             </Link>
-                        </div>
-                    </Form>
+                    </div>
+                </Col>
+                <Col style={{backgroundColor:'azure',border:'solid transparent',borderRadius:'2rem'}}>
+                    <Image src={`${logo}`} style={{height:'100%',width:'100%'}} />
                 </Col>
             </Row>
-            </Container>
+        </Container>
+    </div>
     );
 }
 
