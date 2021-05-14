@@ -24,8 +24,6 @@ const SignInForm = () =>{
 
     async function submitForm(){
         if(userName.length>0&&userName.trim()!==""&&password.length>=6){
-            console.log(userName)
-            console.log(password)
             const data={
                 password:password,
                 username:userName,
