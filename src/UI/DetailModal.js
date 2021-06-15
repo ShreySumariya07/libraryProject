@@ -3,7 +3,6 @@ import {
     Button,
     Modal,
     ModalBody,
-    Container,
     ModalFooter,
     Row,
     Col,
@@ -17,10 +16,9 @@ const Details = (props) => {
                 Details
         </ModalHeader>
             <ModalBody>
-                <Container>
                     <Row>
                         <Col >
-                            <img src={props.img} alt="Image2" style={{height:'200px',width:'200px'}}></img>
+                            <img src={props.img} alt="Image2" ></img>
                         </Col>
                         <Col>
                             <Row style={{ marginBottom: "1%" }}><h2>{props.title}</h2></Row>
@@ -31,7 +29,6 @@ const Details = (props) => {
                     <Row>
                         <Button style={{ marginLeft: "2%", width: "100%" }} href={props.pdf} target="__blank"> Download</Button>
                     </Row>
-                </Container>
             </ModalBody>
             <ModalFooter />
         </Modal>

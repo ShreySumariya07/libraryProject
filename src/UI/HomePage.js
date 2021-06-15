@@ -90,16 +90,23 @@ const HomePage = () => {
     }
     
     return (
-        <Container fluid={true} style={{ padding: "0px", backgroundColor: " #d9d9d9" }}>
+        <div>
+        {
+        localStorage.getItem("token") ?
+        <Container fluid={true} style={{ padding: "0px", backgroundColor: "#ffc75f" }}>
            <AddBook show={openModal} hideModal={hideModal} />
            <EditBook key={title} show={openEditModal} hideModal={hideModals} token={token} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre}  />
            <Details show={openDetailModal} hideModal={hideModals} title={title} img={img} pdf={pdf} description={description} author={author} publication={publication} id={id} genre={genre} />
             <Navbars  openAddModal={openAddModal} />
-            <CarouselPage />
-            <h2 style={{ marginLeft: "4%" }}>Books</h2>
+            <CarouselPage/>
+            <center>
+            <h2 style={{marginTop:'2%',color:'white'}}>Books </h2>
+            <hr style={{backgroundColor:'white',width:'20%',height:'2px'}}></hr>
+            </center>
+           
             <Row>
                 {
-                    books.map((value) => {
+                    books.slice(0,books.length/2+1).map((value) => {
                         return (<BookCard key={value.title} img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
                     }
 
@@ -110,7 +117,7 @@ const HomePage = () => {
                 <Row>
 
                     {
-                        books.map((value) => {
+                        books.slice((books.length/2)+1,books.length+1).map((value) => {
                             return (<BookCard key={value.title} img={value.image} title={value.title} id={value.book_id} pdf={value.pdf} publication={value.publication} genre={value.genre} author={value.author} description={value.description} Modal={(id)=>{Modal(id);}} />);
                         }
 
@@ -118,8 +125,9 @@ const HomePage = () => {
                     }
                 </Row>
             </Collapse>
-            <h4 style={{ cursor: "pointer", marginLeft: "10%" }} onClick={showMore}>{tag}</h4>
-        </Container>
+            <label style={{ cursor: "pointer", marginLeft: "5%",color:'#fff',fontWeight:'bold',fontSize:'20px' }} onClick={showMore}>{tag}</label>
+        </Container>:<center><h3 style={{marginTop:"20%"}}>Please Login Again!! or put / in url</h3></center>}
+        </div>
     );
 
 }

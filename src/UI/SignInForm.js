@@ -24,8 +24,6 @@ const SignInForm = () =>{
 
     async function submitForm(){
         if(userName.length>0&&userName.trim()!==""&&password.length>=6){
-            console.log(userName)
-            console.log(password)
             const data={
                 password:password,
                 username:userName,
@@ -70,7 +68,7 @@ const SignInForm = () =>{
     }
     return(
     <div>
-        <Container>
+        <Container style={{marginLeft:'6%'}}>
             <Row md={2} xs={1} style={{backgroundColor:'white',border:'0rem solid transparent',borderRadius:'2rem'}}>
                 <Col style={{backgroundColor:'orange',border:'solid transparent',borderRadius:'2rem',padding:'2rem'}}>
                     <div style={{display:'flex',justifyContent:'center',margin:'auto auto 1rem auto'}}>

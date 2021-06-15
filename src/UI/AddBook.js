@@ -4,7 +4,6 @@ import {
     Modal,
     Form,
     ModalBody,
-    Container,
     ModalFooter,
 } from 'react-bootstrap';
 import ModalHeader from "react-bootstrap/esm/ModalHeader";
@@ -90,7 +89,6 @@ const AddBook = (props) => {
             Add BOOK
         </ModalHeader>
             <ModalBody>
-            <Container>
                 <Form>
                     <Form.Group>
                         <Form.Label>Title</Form.Label>
@@ -121,8 +119,7 @@ const AddBook = (props) => {
                         <Form.Control   type="text"placeholder="PDF LINK"  onChange={(event)=>{setPdf(event.target.value);}}value={pdf} isInvalid={isInvalidPdf}></Form.Control>
                     </Form.Group>
                 </Form>
-                </Container>
-                <Button style={{marginLeft:"2%"}} onClick={validate} > Add Book</Button>
+               <Button style={{marginLeft:"2%"}} onClick={validate} > Add Book</Button>
             </ModalBody>
             <ModalFooter/>
         </Modal>
